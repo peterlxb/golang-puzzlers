@@ -1,2 +1,2 @@
 # golang-puzzlers
-golang beginner
+golang beginners 
