@@ -11,12 +11,13 @@ func echo(request string) (response string, err error) {
 		return
 	}
 
-	response = fmt.Sprintf("echo: %s\n", response)
+	response = fmt.Sprintf("echo: %s\n", request)
 	return
 }
 
 func main() {
-	for _, req := range []string{"", "hello"} {
+	// 示例1
+	for _, req := range []string{"", "hello!"} {
 		fmt.Printf("reuqest: %s\n", req)
 		resp, err := echo(req)
 		if err != nil {
@@ -24,6 +25,14 @@ func main() {
 			continue
 		}
 		fmt.Printf("response: %s\n", resp)
+	}
+	fmt.Println()
+
+	// 示例2
+	err1 := fmt.Errorf("invalid contents: %s", "#$%")
+	err2 := errors.New(fmt.Sprintf("invalid contents: %s", "#$%"))
+	if err1.Error() == err2.Error() {
+		fmt.Println("The error in err1 and err2 are the same")
 	}
 
 }
